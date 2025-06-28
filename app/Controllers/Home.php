@@ -2,42 +2,62 @@
 
 namespace App\Controllers;
 
+use App\Models\ProductModel;
+
 class Home extends BaseController
 {
-    public function index()
+    protected $product;
+    function __construct()
     {
-        return view('welcome_message');
+        $this->product = new ProductModel();
     }
 
-    public function produk()
+
+    public function index()
     {
-        return view('content/produk');
+        $product = $this->product->findAll();
+        $data['product'] = $product;
+        return view('v_home', $data);
+    }
+
+    public function hello($name = null)
+    {
+        $data['nama'] = $name;
+        $data['title'] = "Judul halaman";
+        return view('front', $data);
     }
 
     public function kategori($id = null)
     {
-        $data['kat'] = [
-            1 => 'Snack',
-            2 => 'Makanan',
-            3 => 'Minuman',
-            4 => 'Bumbu dapur',
-            5 => 'Alat Tulis'
+        $data = [
+            'kat' => [
+                'Alat Tulis',
+                'Pakaian',
+                'Pertukangan',
+                'Elektronik',
+                'Snack'
+            ],
         ];
-
-        $kat = $data['kat'];
-           // Jika ID kategori diberikan, tampilkan kategori yang sesuai
-        if ($id !== null) {
-            echo "<h1> " . ($kat[$id] ?? 'Kategori tidak ditemukan') . "</h1>";
-           // echo "<a href='/kategori'>Kembali ke halaman kategori</a>";
-            // Jika tidak ada ID yang diberikan, tampilkan semua kategori
+        $meta = ['title' => 'Kategori'];
+        if (!is_null($id)) {
+            echo $data['kat'][$id];
         } else {
-            echo "<h1>Ini adalah halaman kategori</h1>";
-            echo "<ul>";
-            foreach ($kat as $key => $value) {
-                echo "<li><a href='/kategori/$key'>$value</a></li>";
-            }
-            echo "</ul>";
+            echo view('layout/header', $meta);
+            echo view('layout/sidebar');
+            echo view('content/kategori', $data);
+            echo view('layout/footer');
         }
-        
+    }
+    public function password()
+    {
+        echo view('Views/hash');
+    }
+    public function profile()
+    {
+        echo view('layout/profile');
+    }
+    public function faq()
+    {
+        echo view('layout/faq');
     }
 }
