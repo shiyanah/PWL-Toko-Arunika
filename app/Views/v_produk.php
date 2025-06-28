@@ -24,9 +24,18 @@ if (session()->getFlashData('failed')) {
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
     Tambah Data
 </button>
+<<<<<<< HEAD
 
 <!-- Table with stripped rows -->
 <table class="table datatable">
+=======
+<a type="button" class="btn btn-success" href="<?= base_url() ?> produk/download">
+    Download Data
+</a>
+
+<!-- Table with stripped rows -->
+<table class=" table datatable">
+>>>>>>> 29b0c264b76cb88e7ef17cc5e16a46edbeb31f92
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -59,6 +68,7 @@ if (session()->getFlashData('failed')) {
                 </td>
             </tr>
             <!-- Edit Modal Begin -->
+<<<<<<< HEAD
 <div class="modal fade" id="editModal-<?= $produk['id'] ?>" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -102,6 +112,51 @@ if (session()->getFlashData('failed')) {
     </div>
 </div>
 <!-- Edit Modal End -->
+=======
+            <div class="modal fade" id="editModal-<?= $produk['id'] ?>" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Data</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="<?= base_url('produk/edit/' . $produk['id']) ?>" method="post" enctype="multipart/form-data">
+                            <?= csrf_field(); ?>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="name">Nama</label>
+                                    <input type="text" name="nama" class="form-control" id="nama" value="<?= $produk['nama'] ?>" placeholder="Nama Barang" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Harga</label>
+                                    <input type="text" name="harga" class="form-control" id="harga" value="<?= $produk['harga'] ?>" placeholder="Harga Barang" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Jumlah</label>
+                                    <input type="text" name="jumlah" class="form-control" id="jumlah" value="<?= $produk['jumlah'] ?>" placeholder="Jumlah Barang" required>
+                                </div>
+                                <img src="<?php echo base_url() . "img/" . $produk['foto'] ?>" width="100px">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="check" name="check" value="1">
+                                    <label class="form-check-label" for="check">
+                                        Ceklis jika ingin mengganti foto
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Foto</label>
+                                    <input type="file" class="form-control" id="foto" name="foto">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Edit Modal End -->
+>>>>>>> 29b0c264b76cb88e7ef17cc5e16a46edbeb31f92
         <?php endforeach ?>
     </tbody>
 </table>

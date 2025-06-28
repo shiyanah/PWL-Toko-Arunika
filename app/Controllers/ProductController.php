@@ -4,6 +4,11 @@ namespace App\Controllers;
 
 use App\Models\ProductModel;
 
+<<<<<<< HEAD
+=======
+use Dompdf\Dompdf;
+
+>>>>>>> 29b0c264b76cb88e7ef17cc5e16a46edbeb31f92
 class ProductController extends BaseController
 {
     protected $product;
@@ -85,4 +90,33 @@ class ProductController extends BaseController
 
         return redirect('produk')->with('success', 'Data Berhasil Dihapus');
     }
+<<<<<<< HEAD
+=======
+    public function download()
+    {
+        //get data from database
+        $product = $this->product->findAll();
+
+        //pass data to file view
+        $html = view('v_produkPDF', ['product' => $product]);
+
+        //set the pdf filename
+        $filename = date('y-m-d-H-i-s') . '-produk';
+
+        // instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+
+        // load HTML content (file view)
+        $dompdf->loadHtml($html);
+
+        // (optional) setup the paper size and orientation
+        $dompdf->setPaper('A4', 'potrait');
+
+        // render html as PDF
+        $dompdf->render();
+
+        // output the generated pdf
+        $dompdf->stream($filename);
+    }
+>>>>>>> 29b0c264b76cb88e7ef17cc5e16a46edbeb31f92
 }

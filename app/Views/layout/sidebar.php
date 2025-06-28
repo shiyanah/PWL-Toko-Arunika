@@ -11,9 +11,15 @@
     </li><!-- End Home Nav -->
 
     <li class="nav-item">
+<<<<<<< HEAD
       <a class="nav-link <?php echo (uri_string() == 'kategori') ? "" : "collapsed" ?>" href="kategori">
         <i class="bi bi-cart-fill"></i>
         <span>Kategori</span>
+=======
+      <a class="nav-link <?php echo (uri_string() == 'keranjang') ? "" : "collapsed" ?>" href="keranjang">
+        <i class="bi bi-cart-fill"></i>
+        <span>Keranjang</span>
+>>>>>>> 29b0c264b76cb88e7ef17cc5e16a46edbeb31f92
       </a>
 
     </li><!-- Kategori Nav -->
